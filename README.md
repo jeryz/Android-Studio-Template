@@ -4,11 +4,11 @@
 [Template Format Document](http://www.i-programmer.info/professional-programmer/resources-and-tools/6845-android-adt-template-format-document.html#toc_escapexmlstring)  +  [FreeMarker](http://freemarker.org/docs/index.html)<br>
 
 ###模板介绍<br>
-模板存放于studio下的plugins\android\lib\templates<br>
+模板存放在studio安装目录下的plugins\android\lib\templates<br>
 <br>
 MyTemplate/ <br>
   * globals.xml     存放全局变量文件<br>
-  * recipe.xml      配置引用模板路径和输出文件的路径，及要复制的文件<br>
+  * recipe.xml      配置从该模板生成代码时应执行的各个指令，如复制文件，配置生成目录等<br>
   * template.xml    配置模板基本信息，输入参数，描述，globals文件和recipe文件<br>
   * template_*.png   模板配图<br>
   * root/ <br>
@@ -71,8 +71,35 @@ MyTemplate/ <br>
     <execute file="recipe.xml.ftl" />
 </template>
 ```
+###globals
+```
+<globals>
+    <global id="activityClass" value="${activityName}Activity" />
+</globals>
+```
+###recipe
+```
+<recipe>
+    <!-- copy 复制文件，默认是root目录下，可配置参数from="原文件路径" to="输出文件路径"-- >
+    <copy from="res/drawable-xhdpi" />
+    <copy from="res/layout/activity_simple.xml"
+                to="res/layout/activity_${activityNameLower}.xml" />
+                
+    <!-- instantiate 跟copy一样是复制，只不过会自动去掉文件后缀ftl 
+    可配置参数from="原文件路径" to="输出文件路径"-- >
+    <instantiate from="res/values/strings.xml.ftl" />
+    <instantiate from="src/app_package/SimpleActivity.java.ftl"
+                       to="${srcOut}/${activityClass}.java" />
+   
+    <!-- 当创建完成后打开指定的文件 file="文件路径"-->
+    <open file="res/layout/${activityNameLower}.xml" />
+    
+    <!-- <merge> 合并到已有的文件，一般用于合并AndroidManifest.xml，strings.xml等-->
+</recipe>
+```
 
 ###一些模板函数介绍
+```
 activityToLayout(string) 根据activity名字转换为layout名字<br>
 layoutToActivity(string) 根据layout名字转换为activity名字<br>
 underscoreToCamelCase(string) 去掉字符串分隔符转驼峰式字符串<br>
@@ -83,3 +110,26 @@ extractLetters(string) 去除标点符号和空白字符<br>
 escapeXmlString(string)<br>
 escapeXmlText(string)<br>
 escapeXmlAttribute(string)<br>
+```
+###一些FreeMarker表达语法
+```
+<#if 表达式>
+  代码
+<#else>
+  代码
+</#if>
+
+<#if 表达式>
+  代码
+<#else if 表达式>
+  代码
+</#if>
+
+<#include "*/footer.ftl">
+
+${"string"?ends_with("end")}
+
+${"red"?starts_with("red")}
+
+${GrEeN MoUsE"?lower_case}
+```
