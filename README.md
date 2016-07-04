@@ -5,6 +5,7 @@
 
 ###模板介绍<br>
 模板存放在studio安装目录下的plugins\android\lib\templates<br>
+一般只需要改template和recipe这两个文件，在template配置要输入的参数，然后编写java，xml模板文件，recipe配置模板文件输出
 <br>
 Template/ <br>
   * globals.xml     存放全局变量文件<br>
