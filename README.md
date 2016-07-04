@@ -6,7 +6,7 @@
 ###模板介绍<br>
 模板存放在studio安装目录下的plugins\android\lib\templates<br>
 <br>
-MyTemplate/ <br>
+Template/ <br>
   * globals.xml     存放全局变量文件<br>
   * recipe.xml      配置从该模板生成代码时应执行的各个指令，如复制文件，配置生成目录等<br>
   * template.xml    配置模板基本信息，输入参数，描述，globals文件和recipe文件<br>
@@ -100,16 +100,16 @@ MyTemplate/ <br>
 
 ###一些模板函数介绍
 ```
-activityToLayout(string) 根据activity名字转换为layout名字<br>
-layoutToActivity(string) 根据layout名字转换为activity名字<br>
-underscoreToCamelCase(string) 去掉字符串分隔符转驼峰式字符串<br>
+activityToLayout(string) 根据activity名字转换为layout名字
+layoutToActivity(string) 根据layout名字转换为activity名字
+underscoreToCamelCase(string) 去掉字符串分隔符转驼峰式字符串
 camelCaseToUnderscore(string) 转小写单词加分割符<br>
-classToResource(string) 剥离class后缀名[Activity|Fragment|Provider|Service]<br>
-slashedPackageName(string) 将包名转为路径<br>
-extractLetters(string) 去除标点符号和空白字符<br>
-escapeXmlString(string)<br>
-escapeXmlText(string)<br>
-escapeXmlAttribute(string)<br>
+classToResource(string) 剥离class后缀名[Activity|Fragment|Provider|Service]
+slashedPackageName(string) 将包名转为路径
+extractLetters(string) 去除标点符号和空白字符
+escapeXmlString(string)
+escapeXmlText(string)
+escapeXmlAttribute(string)
 ```
 ###一些FreeMarker表达语法
 ```
