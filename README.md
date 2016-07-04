@@ -45,6 +45,8 @@ Template/ <br>
         constraints="[class|activity|layout|drawable|string|package|id|apilevel|unique|nonempty|exists]"
         <!--根据其他输入的参数来提供建议值-->
         suggest="${layoutToActivity(layoutName)}"
+        <!--控制参数是否显示-->
+        visibility="isNewProject!false"
         <!--默认值-->
         default="MainActivity"
         <!--参数的说明-->
