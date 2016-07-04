@@ -75,7 +75,10 @@ Template/ <br>
 ###globals
 ```
 <globals>
-    <global id="activityClass" value="${activityName}Activity" />
+    <global id="manifestOut" value="${manifestDir}" />
+    <global id="buildVersion" value="${buildApi}" />
+   	<global id="srcOut" value="${srcDir}/${slashedPackageName(packageName)}" />
+    <global id="resOut" value="${resDir}" />
 </globals>
 ```
 ###recipe
@@ -86,7 +89,7 @@ Template/ <br>
     <copy from="res/layout/activity_simple.xml"
                 to="res/layout/activity_${activityNameLower}.xml" />
                 
-    <!-- instantiate 跟copy一样是复制，只不过会自动去掉文件后缀ftl 
+    <!-- instantiate 跟copy一样是复制，只不过会自动去掉文件后缀 
     可配置参数from="原文件路径" to="输出文件路径"-- >
     <instantiate from="res/values/strings.xml.ftl" />
     <instantiate from="src/app_package/SimpleActivity.java.ftl"
@@ -96,6 +99,8 @@ Template/ <br>
     <open file="res/layout/${activityNameLower}.xml" />
     
     <!-- <merge> 合并到已有的文件，一般用于合并AndroidManifest.xml，strings.xml等-->
+    <merge from="root/build.gradle.ftl"
+             to="${escapeXmlAttribute(projectOut)}/build.gradle" />
 </recipe>
 ```
 
