@@ -20,7 +20,7 @@ MyTemplate/ <br>
         * \*.java.ftl   java模板文件<br>
     * AndroidManifest.xml.ftl   manifest模板文件<br>
 
-##`<template>`
+###`<template>`
 ```
 <template
     format="3"
@@ -72,3 +72,14 @@ MyTemplate/ <br>
 </template>
 ```
 
+###一些模板函数介绍
+activityToLayout(string) 根据activity名字转换为layout名字<br>
+layoutToActivity(string) 根据layout名字转换为activity名字<br>
+underscoreToCamelCase(string) 去掉字符串分隔符转驼峰式字符串<br>
+camelCaseToUnderscore(string) 转小写单词加分割符<br>
+classToResource(string) 剥离class后缀名[Activity|Fragment|Provider|Service]<br>
+slashedPackageName(string) 将包名转为路径<br>
+extractLetters(string) 去除标点符号和空白字符<br>
+escapeXmlString(string)<br>
+escapeXmlText(string)<br>
+escapeXmlAttribute(string)<br>
