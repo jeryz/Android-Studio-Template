@@ -140,4 +140,14 @@ ${"string"?ends_with("end")}
 ${"red"?starts_with("red")}
 
 ${GrEeN MoUsE"?lower_case}
+
+${"abcdefgh"?keep_after("de")} output:fgh
+${"abcdef"?keep_before("de")} output:abc
+
+${"abcdef"?remove_beginning("abc")} output:def
+${"abcdef"?remove_ending("def")}  output:abc
+
+${"aaaaa"?replace("aaa", "X")} output:Xaa
+
+string (when used with a string value)
 ```
